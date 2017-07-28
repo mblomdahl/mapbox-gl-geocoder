@@ -8,7 +8,7 @@ You'll need a [Mapbox access token](https://www.mapbox.com/help/create-api-acces
 
 ## Testing
 
-Tests require an MapboxAccessToken env variable to be set.
+Tests require an MapboxAccessToken env variable to be set. Create a `env.test.sh` file next to package.json with the following line:
 
     export MapboxAccessToken="YOUR ACCESS TOKEN"
 
