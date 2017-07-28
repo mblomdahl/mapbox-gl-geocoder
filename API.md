@@ -28,19 +28,28 @@ A geocoder component using Mapbox Geocoding API
     -   `options.bbox` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)?** a bounding box argument: this is
         a bounding box given as an array in the format [minX, minY, maxX, maxY].
         Search results will be limited to the bounding box.
-    -   `options.types` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** a comma seperated list of types that filter
+    -   `options.types` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** a comma seperated list of types that filter
         results to match those specified. See <https://www.mapbox.com/developers/api/geocoding/#filter-type>
         for available types.
-    -   `options.country` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** a comma separated list of country codes to
+    -   `options.country` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** a comma separated list of country codes to
         limit results to specified country or countries.
     -   `options.minLength` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Minimum number of characters to enter before results are shown. (optional, default `2`)
     -   `options.limit` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Maximum number of results to show. (optional, default `5`)
+    -   `options.inputEl` **[HTMLInputElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)?** Custom input element to attach geocoder to.
+    -   `options.clearEl` **[HTMLElement](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)?** Optional HTML element for clearing the search box, only used in conjunction with an `inputEl`.
 
 **Examples**
 
 ```javascript
 var geocoder = new MapboxGeocoder();
 map.addControl(geocoder);
+```
+
+```javascript
+var mapLessGeocoder = new MapboxGeocoder({
+  inputEl: document.body.appendChild(document.createElement('input'))
+});
+mapLessGeocoder.on('result', function (res) { console.log(res); });
 ```
 
 Returns **[MapboxGeocoder](#mapboxgeocoder)** `this`
@@ -91,7 +100,7 @@ Subscribe to events that happen within the plugin.
     -   **loading** `{ query } Emitted when the geocoder is looking up a query`
     -   **results** `{ results } Fired when the geocoder returns a response`
     -   **result** `{ result } Fired when input is set`
-    -   **error** \`{ error } Error as string
+    -   **error** `{ error } Error as string`
 -   `fn` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** function that's called when the event is emitted.
 
 Returns **[MapboxGeocoder](#mapboxgeocoder)** this;
